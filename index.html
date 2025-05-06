@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Clock</title>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+      <style>
+            * {
+                  font-family: "Orbitron", sans-serif;
+                  margin: 0;
+                  padding: 0;
+            }
+
+            div.digital-clock {
+                  width: 100%;
+                  height: 100vh;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
+            }
+
+            div.clock {
+                  background-color: black;
+                  padding: 25px;
+                  border-radius: 25px;
+                  border-radius: 15px;
+            }
+
+            div.clock div.screen {
+                  background-color: #a1a575;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  align-items: center;
+                  padding: 15px;
+                  border-radius: 15px;
+                  gap: 15px;
+                  width: 540px;
+            }
+
+            div.large {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  align-items: center;
+                  gap: 10px;
+                  padding-right: 15px;
+            }
+
+            div.large div.hour {
+                  font-size: 100pt;
+                  font-weight: 700;
+            }
+
+            div.large div.colon {
+                  font-size: 56pt;
+                  font-weight: 700;
+            }
+
+            div.large div.minute {
+                  font-size: 100pt;
+                  font-weight: 700;
+            }
+
+            div.tiny {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 5px;
+            }
+
+            div.tiny div.seconds {
+                  display: flex;
+                  flex-direction: row;
+                  gap: 5px;
+                  align-items: flex-end;
+            }
+
+            div.tiny div.seconds div.second {
+                  font-size: 24pt;
+                  font-weight: 500;
+                  align-self: flex-end;
+                  line-height: 24pt;
+            }
+
+            div.tiny div.seconds div.milisecond {
+                  font-size: 12pt;
+                  font-weight: 500;
+            }
+
+            div.tiny div.day {
+                  font-weight: 400;
+                  font-size: 30pt;
+                  text-transform: uppercase;
+            }
+
+            div.tiny div.year {
+                  font-size: 21pt;
+                  font-weight: 400;
+            }
+      </style>
+</head>
+
+<body>
+      <div class="digital-clock">
+            <div class="clock">
+                  <div class="screen">
+                        <div class="large">
+                              <div class="hour" id="hour">10</div>
+                              <div class="colon">:</div>
+                              <div class="minute" id="minute">58</div>
+                        </div>
+                        <div class="tiny">
+                              <div class="seconds">
+                                    <div class="second" id="second">28</div>
+                                    <div class="milisecond" id="milisecond">32</div>
+                              </div>
+                              <div class="day" id="day">sat</div>
+                              <div class="year" id="year">2024</div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <script>
+            let hourElement = document.getElementById('hour');
+            let minuteElement = document.getElementById('minute');
+            let secondElement = document.getElementById('second');
+            let milisecondElement = document.getElementById('milisecond');
+            let dayElement = document.getElementById('day');
+            let yearElement = document.getElementById('year');
+
+            setInterval(() => {
+                  //for milisecond
+                  let date = new Date();
+                  let milisecond = date.getMilliseconds();
+                  milisecondElement.innerHTML = milisecond;
+                  //for second
+                  let second = date.getSeconds();
+                  secondElement.innerHTML = second;
+                  //for minute
+                  let minute = date.getMinutes();
+                  minuteElement.innerHTML = minute;
+                  //for hour
+                  let hour = date.getHours();
+                  hourElement.innerHTML = hour;
+                  //for day
+                  let day = date.getDay();
+                  let days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+                  dayElement.innerHTML = days[day];
+                  //for year
+                  let year = date.getFullYear();
+                  yearElement.innerHTML = year;
+
+
+            });
+      </script>
+</body>
+
+</html>
